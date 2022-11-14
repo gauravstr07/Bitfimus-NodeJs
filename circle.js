@@ -7,12 +7,4 @@ class Circle {
   }
 }
 
-// exports.area = function (r) {
-//   return Math.PI * r * r;
-// };
-
-// exports.circumference = function (r) {
-//   return 2 * Math.pi * r;
-// };
-
 module.exports = Circle;
