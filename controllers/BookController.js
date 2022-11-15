@@ -8,9 +8,12 @@ exports.index = async (req, res) => {
 };
 
 exports.store = async (req, res) => {
-  const db = await connect();
-  await db.collection("book").insertOne(req.body);
-  res.status(201).json(req.body);
+  try {
+    const addBook = await Book.create(req.body);
+    res.status(201).send(addBook);
+  } catch (error) {
+    res.status(400).send(error);
+  }
 };
 
 exports.show = async (req, res) => {
