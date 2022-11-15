@@ -12,13 +12,8 @@ bookRouter
   .post(async (req, res) => {
     const db = await connect();
 
-    const data = {
-      title: "Theory of everything",
-      author: "Stefen Hokkinse",
-    };
-
-    await db.collection("book").insertOne(data);
-    res.json({ data: "Create new book" });
+    await db.collection("book").insertOne(req.body);
+    res.json(req.body);
   });
 
 bookRouter
