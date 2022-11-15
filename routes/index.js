@@ -6,11 +6,11 @@ const router = express.Router();
 router.use("/book", bookRouter);
 
 router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "/../page/home.html"), { name: "Gaurav" });
+  res.render("index", { name: "Gaurav" });
 });
 
 router.all("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/../page/404.html"));
+  res.render("404", { error: "Page Not Found🤔" });
 });
 
 module.exports = router;
