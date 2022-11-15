@@ -1,6 +1,6 @@
 const http = require("http");
 const fs = require("fs");
-const { resolve } = require("path");
+
 
 const port = 5000;
 
@@ -14,9 +14,17 @@ const func2 = () => {
 
 const func3 = () => {
   console.log("func3");
+
+  process.nextTick(() => {
+    console.log("i am next");
+  });
+
+  
+
   setTimeout(() => {
     func1();
   }, 1000);
+
   new Promise((resolve, reject) => {
     resolve("I am a promise");
   })
@@ -26,6 +34,7 @@ const func3 = () => {
     .catch((err) => {
       console.log(err);
     });
+
   func2();
 };
 
