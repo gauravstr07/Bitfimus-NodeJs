@@ -4,41 +4,7 @@ const fs = require("fs");
 
 const port = 5000;
 
-const func1 = () => {
-  console.log("func1");
-};
 
-const func2 = () => {
-  console.log("func2");
-};
-
-const func3 = () => {
-  console.log("func3");
-
-  process.nextTick(() => {
-    console.log("i am next");
-  });
-
-  
-
-  setTimeout(() => {
-    func1();
-  }, 1000);
-
-  new Promise((resolve, reject) => {
-    resolve("I am a promise");
-  })
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
-  func2();
-};
-
-func3();
 
 const server = http.createServer((req, res) => {
   if (req.url === "/") {
